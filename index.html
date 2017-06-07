@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My map</title>
+
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">
+</head>
+
+<body class="container">
+
+    <!-- NAVBAR -->
+
+    <header class="row">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a id="show-listings" class="navbar-brand" type="button" value="Show Listings" href="#">Show Pins ;)</a>
+                        </div>
+                    </li>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <li>
+                            <!-- tools-->
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown ">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <!--  <input id="show-listings" class="btn btn-default navbar-btn nav nav-justified" type="button" value="Show Listings"> -->
+                                        <input id="hide-listings" class="btn btn-default btn btn-success navbar-btn nav nav-justified" type="button" value="Hide Pins">
+                                        <input id="toggle-drawing" class="btn btn-default btn-info navbar-btn nav nav-justified" type="button" value="Drawing Tools">
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="nav navbar-nav">
+                            <li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Search options <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <form class="navbar-form navbar-left nav nav-tabs nav-justified">
+                                            <div class="form-group ">
+                                                <input id="zoom-to-area-text" type="text" placeholder="Enter your favorite area!">
+                                            </div>
+                                            <input id="zoom-to-area" type="button" value="Zoom">
+                                        </form>
+
+                                        <form class="navbar-form navbar-left nav nav-tabs nav-justified">
+                                            <li>
+                                                <p class="text">Search by time</p>
+                                                <span class="text"> Within </span>
+                                                <select id="max-duration">
+                                                    <option value="10">10 min</option>
+                                                    <option value="15">15 min</option>
+                                                    <option value="30">30 min</option>
+                                                    <option value="60">1 hour</option>
+                                                </select>
+                                                <select id="mode">
+                                                    <option value="DRIVING">drive</option>
+                                                    <option value="WALKING">walk</option>
+                                                    <option value="BICYCLING">bike</option>
+                                                    <option value="TRANSIT">transit ride</option>
+                                                </select>
+                                                <span class="text">of</span>
+                                                <input id="search-within-time-text" type="text" placeholder="Ex: Krupówki">
+                                                <input id="search-within-time" type="button" value="Go">
+                                            </li>
+                                        </form>
+                                        <form class="navbar-form navbar-left nav nav-tabs nav-justified">
+                                            <span class="text">Search for nearby places</span>
+                                            <input id="places-search" type="text" placeholder="Ex: Pizza delivery">
+                                            <input id="go-places" type="button" value="Go">
+                                        </form>
+                                    </ul>
+                        </div>
+                        </li>
+                        </li>
+                        <li>
+                            <!-- list of pins-->
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown list-unstyled">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> My locations <span class="caret"></span></a>
+                                    <ul class="dropdown-menu " data-bind="fromJS: locations">
+                                        <li data-bind="text: title">
+                                        </li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <form class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search my locations">
+                                </div>
+                                <button type="submit" class="btn btn-default">Filter</button>
+                            </form>
+                        </li>
+
+                </ul>
+                <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+
+
+
+
+
+        </nav>
+    </header>
+
+<section class="row">
+  <div id="temp" class="col-sm-12 text-center weather">loading weather data</div>
+</section>
+
+
+
+    <section class="row">
+        <div id="map" class="col-sm-12"></div>
+    </section>
+
+
+    <script src="js/lib/knockout-3.4.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" async></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry,drawing&key=AIzaSyCkJVp0lKYz1uUM7YNk8CP60VHLV2SJXBo&v=3&callback=initMap">
+    </script>
+</body>
+
+</html>
